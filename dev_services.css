@@ -1,0 +1,182 @@
+#intro {
+    background-image: url(images/code_background.png);
+    background-size: cover cover;
+    background-position: center;
+
+}
+
+#main_pages {
+    background-image: url(images/code_background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 18pt;
+
+}
+
+/*header {
+    background-image: url(images/code_background.png);
+    background-size: cover;
+    background-position: center;
+	line-height: 0.3;
+	padding-bottom: 5%;
+	padding-top: 3px;
+	box-shadow: 0 5px 0px 0 rgba(7, 5, 5, 0.2);
+}*/
+
+header ul li {
+    font-size: 18pt;
+}
+
+a:link {
+	color: #00FFFF;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:visited {
+	color: orange;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:hover {
+	color: black;
+	background-color: transparent;
+	text-decoration: underline;
+}
+a:active {
+	color: #EDDA74;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+/* Common transition settings */
+.hidden-left, .hidden-right {
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 1s;
+}
+
+/* Starting positions */
+.hidden-left {
+    transform: translateX(-100%);
+}
+
+.hidden-right {
+    transform: translateX(100%);
+}
+
+/* The "Active" state for both */
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+.logos {
+    display: flex;
+}
+
+.logo:nth-child(1) {
+    transition-delay: 200ms;
+}
+
+.logo:nth-child(2) {
+    transition-delay: 400ms;
+}
+
+.logo:nth-child(3) {
+    transition-delay: 600ms;
+}
+
+/*#definition {
+    background-color: white;
+    border: 5px solid orange;
+}*/
+
+#front_end {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#back_end {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#full_stack {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#business_solutions {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#fss_title {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#web {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#app_dev {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#web_app {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#stan_app {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+#mob_app {
+    background-color: white;
+    border: 5px solid orange;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in-element {
+    opacity: 0;
+    animation: fadeIn 15s ease-out forwards;    
+}
+
+#linkedin_link {
+    color: aqua;
+}
+
+#book_link {
+    color: #00FFFF;
+}
+
+#gram_link {
+    color: #00FFFF;
+}
+
+#email_link:hover {
+    color: orange;
+}
+
+#linkedin_link:hover {
+    color: orange;
+}
+
+#book_link:hover {
+    color: orange;
+}
+
+#gram_link:hover {
+    color: orange;
+}
