@@ -22,10 +22,11 @@ def get_db_connection():
     """Establish connection to MySQL"""
     try:
         connection = mysql.connector.connect(
-            host = "localhost",
-            database = "fullstack_db",
-            user = "root",
-            password = os.environ.get("DB_PASSWORD", 'TrU3eMa5sT3Er#70')
+            host = os.environ.get("MYSQLHOST","localhost"),
+            database = os.environ.get("MYSQLDATABASE", "fullstack_db"),
+            user = os.environ.get("MYSQLUSER", "root"),
+            password = os.environ.get("MYSQLPASSWORD", 'TrU3eMa5sT3Er#70'),
+            port = os.environ.get("MYSQLPORT", 3306)
         )
         return connection
     except Error as e:
