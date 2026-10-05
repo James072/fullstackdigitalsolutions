@@ -36,7 +36,7 @@ def get_db_connection():
             host=os.environ.get("MYSQLHOST", "localhost"),
             
             # Railway generates a random DB name like 'railway', defaults to 'fullstack_db' locally
-            database=os.environ.get("MYSQLDATABASE", "fullstack_db"),
+            database=os.environ.get("MYSQL_DATABASE", os.environ.get("MYSQLDATABASE", "fullstack_db")),
             
             # Railway usually uses 'root', but we make it dynamic
             user=os.environ.get("MYSQLUSER", "root"),
