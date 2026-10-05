@@ -44,7 +44,7 @@
 
         <div class="container mt-5">
             <form id="consult-form" data-secret="{{ client_secret }}" 
-                action="http://localhost:5000/submit_consultation" method="post" enctype="multipart/form-data" class="bg-black bg-opacity-75 p-3" 
+                action="{{ url_for('submit_consultation') }}" method="post" enctype="multipart/form-data" class="bg-black bg-opacity-75 p-3" 
                 style="border: 1px solid white;">
                 <div class="row justify-content-center">
                     <h1 class="text-center text-white fw-bold hidden-right">BOOK A CONSULTATION</h1>
