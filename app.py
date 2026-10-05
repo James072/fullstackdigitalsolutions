@@ -21,6 +21,10 @@ from flask import redirect, url_for
 @app.route("/")
 def home():
     # This makes your base up.railway.app URL load your home page directly
+    return render_template("index.html")
+
+@app.route("/definition")
+def definition():
     return render_template("definition.html")
 
 @app.route("/websites")
