@@ -20,8 +20,21 @@ from flask import redirect, url_for
 # Add this new route to catch base URL traffic
 @app.route("/")
 def home():
-    # Automatically redirects users to the booking page
-    return redirect(url_for('book_consult'))
+    # This makes your base up.railway.app URL load your home page directly
+    return render_template("definition.html")
+
+@app.route("/websites")
+def websites():
+    return render_template("websites.html")
+
+@app.route("/apps")
+def apps():
+    return render_template("apps.html")
+
+@app.route("/creative_labs")
+def creative_labs():
+    return render_template("creative_labs.html")
+
 
 # (Make sure 'book_consult' matches the exact function name of your booking route)
 
