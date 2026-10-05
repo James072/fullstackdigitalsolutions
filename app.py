@@ -15,6 +15,16 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #Initialize Stripe with test secret key
 stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
 
+from flask import redirect, url_for
+
+# Add this new route to catch base URL traffic
+@app.route("/")
+def home():
+    # Automatically redirects users to the booking page
+    return redirect(url_for('book_consult'))
+
+# (Make sure 'book_consult' matches the exact function name of your booking route)
+
 def allowed_file(filename):
     """Validate the file extension"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
