@@ -1,12 +1,12 @@
 #intro {
-    background-image: url(static/images/code_background.png);
+    background-image: url(/static/images/code_background.png);
     background-size: cover cover;
     background-position: center;
 
 }
 
 #main_pages {
-    background-image: url(static/images/code_background.png);
+    background-image: url(/static/images/code_background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
