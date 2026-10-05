@@ -20,18 +20,26 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def get_db_connection():
-    """Establish connection to MySQL and return the exact error if it fails."""
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            database="fullstack_db",
-            user="root",
-            password=os.environ.get("DB_PASSWORD", "TrU3eMa5sT3Er#70")
+            # Railway uses 'MYSQLHOST', defaults to 'localhost' locally
+            host=os.environ.get("MYSQLHOST", "localhost"),
+            
+            # Railway generates a random DB name like 'railway', defaults to 'fullstack_db' locally
+            database=os.environ.get("MYSQLDATABASE", "fullstack_db"),
+            
+            # Railway usually uses 'root', but we make it dynamic
+            user=os.environ.get("MYSQLUSER", "root"),
+            
+            # Railway generates a secure password, fallback to local
+            password=os.environ.get("MYSQLPASSWORD", "TrU3eMa5sT3Er#70"),
+            
+            # Railway uses a specific port, default to 3306 locally
+            port=int(os.environ.get("MYSQLPORT", 3306))
         )
         return connection, None
     except Exception as e:
-        # Capture the raw exception instead of just printing it
-        return None, str(e) 
+        return None, str(e)
 
 # Route to serve page and initialize transaction
 @app.route("/book_consult", methods=["GET"])
