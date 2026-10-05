@@ -14,13 +14,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
             rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://js.stripe.com/v3/"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="dev_services.css">
-        <script defer src="script.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='dev_services.css') }}">
+        <script defer src="{{ url_for('static', filename='script.js') }}"></script>
     </head>
     <body id="main_pages">
         <header>
-            <img src="images/fullstack_DSDA_logo3.gif" class="figure-img img-fluid mx-auto d-block hidden-left" style="width: 300px;">
+            <img src="{{ url_for('static', filename='images/fullstack_DSDA_logo3.gif') }}" class="figure-img img-fluid mx-auto d-block hidden-left" style="width: 300px;">
 
             <ul class="nav justify-content-center mt-5 gap-3 hidden-left">
                 <li class="nav-item">
@@ -42,7 +43,8 @@
         </header>
 
         <div class="container mt-5">
-            <form action="http://localhost:5000/submit_consultation" method="post" enctype="multipart/form-data" class="bg-black bg-opacity-75 p-3" 
+            <form id="consult-form" data-secret="{{ client_secret }}" 
+                action="http://localhost:5000/submit_consultation" method="post" enctype="multipart/form-data" class="bg-black bg-opacity-75 p-3" 
                 style="border: 1px solid white;">
                 <div class="row justify-content-center">
                     <h1 class="text-center text-white fw-bold hidden-right">BOOK A CONSULTATION</h1>
@@ -103,8 +105,9 @@
                     </div>
                 </div>
                 <!-- File Upload Section -->
-                <div class="row justify-content-start mt-3">
-                    <div class="col-xl-6 hidden-left">
+                <!-- File Upload Section -->
+                <div class="row justify-content-center mt-3">
+                    <div class="col-xl-8 hidden-left">
                         <label for="project_file" class="form-label text-white hidden-right">Upload Project Details (.pdf, .jpg, .png):</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-file-earmark-arrow-up-fill text-dark"></i></span>
@@ -112,29 +115,22 @@
                         </div>
                     </div>
                 </div>
-                <!-- Payment Section -->
+
+                <!-- Stripe Payment Section -->
                 <div class="row justify-content-center mt-4 mb-4 border-top border-secondary pt-3">
                     <h4 class="text-center text-white fw-bold hidden-right">Consultation Fee Payment ($50.00)</h4>
-                    <div class="col-xl-4 mb-3 hidden-left">
-                        <label for="cc_name" class="form-label text-white hidden-right">Name on Card:</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-person-badge text-dark"></i></span>
-                            <input type="text" class="form-control text-white" style="background-color: black;" id="cc_name" name="cc_name" required>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 mb-3 hidden-right">
-                        <label for="cc_number" class="form-label text-white hidden-right">Card Number:</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-credit-card-fill text-dark"></i></span>
-                            <input type="text" class="form-control text-white" style="background-color: black;" id="cc_number" name="cc_number" pattern="\d*" maxlength="16" required>
-                        </div>
+                    <div class="col-xl-8 mb-3">
+                        <!-- Stripe will inject the secure iframe here -->
+                        <div id="card-element" class="form-control p-3 bg-dark border-secondary"></div>
+                        <!-- Used to display form errors -->
+                        <div id="card-errors" role="alert" class="text-danger mt-2 fw-bold"></div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 hidden-left">
-                        <button type="submit" class="btn btn-outline-light">Submit</button>
-                        <button type="reset" class="btn btn-outline-light">Clear</button>
-                    </div>
+                
+                <!-- Form Buttons -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light me-2">Subscribe</button>
+                    <button type="reset" class="btn btn-outline-light">Clear</button>
                 </div>
             </form>
         </div>
@@ -143,7 +139,7 @@
             <div class="container mt-2" style="overflow: hidden;">
                 <div class="row justify-content-center">
                     <div class="col-xl-4 text-center text-white hidden-left">
-                        <img src="images/fullstack_DSDA_logo3.gif" class="figure-img img-fluid mx-auto d-block hidden-left" 
+                        <img src="{{ url_for('static', filename='images/fullstack_DSDA_logo3.gif') }}" class="figure-img img-fluid mx-auto d-block hidden-left" 
                             style="width: 100px;">
                         <p style="font-size: 12pt;"> 
                             Full Stack Digital Solutions<br>
