@@ -14,7 +14,7 @@ hiddenElements.forEach((el) => observer .observe(el));
 
 
 // Initialize Stripe with your Test Publishable Key
-const stripe = Stripe('pk_test_51ULIzeIjz4EbMsqXOP46LDxOmmZ8f4qCNWWF6i0UCKsoUkgAP95Q93FRkH5ixSKEhnFEovQhPNU8zIx4Bq3UKwqW006R6EkzZo'); 
+const stripe = Stripe('pk_live_51ULRUEIg6k5wSO8sVciuKNxxylTyNr25sIs8URwgLOcaibvVPmslnjljq5TkUaeqjsNH5xA2Z6JRsokAeVQarE1r00M8l3CLTe'); 
 const elements = stripe.elements();
 
 // Create the card element with custom styling to match your dark theme
